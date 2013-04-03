@@ -160,6 +160,8 @@ def complete_process(request, backend, *args, **kwargs):
                       backend_setting(backend,
                                       'SOCIAL_AUTH_LOGIN_REDIRECT_URL') or \
                       DEFAULT_REDIRECT
+                if 'mobileoauth' in request.session and request.session['mobileoauth'] == 'true':
+                    url = "/mobileoauth/"
         else:
             msg = setting('SOCIAL_AUTH_INACTIVE_USER_MESSAGE', None)
             url = backend_setting(backend, 'SOCIAL_AUTH_INACTIVE_USER_URL',
