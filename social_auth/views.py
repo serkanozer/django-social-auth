@@ -153,6 +153,8 @@ def complete_process(request, backend, *args, **kwargs):
             # account, send him to the new-users-page if defined.
             new_user_redirect = backend_setting(backend,
                                            'SOCIAL_AUTH_NEW_USER_REDIRECT_URL')
+            if 'oauth_redirect_url' in request.session:
+                new_user_redirect = request.session['oauth_redirect_url']
             if new_user_redirect and is_new:
                 url = new_user_redirect
             else:
