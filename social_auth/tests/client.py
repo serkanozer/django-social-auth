@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.http import SimpleCookie, HttpRequest
 from django.test.client import Client, RequestFactory
-from django.utils import simplejson
+import json
 from django.utils.importlib import import_module
 from mock import patch
 from social_auth.views import complete
@@ -87,7 +87,7 @@ class SocialClient(Client):
         """
         mock_urlopen.side_effect = [
             DumbResponse(access_token),
-            DumbResponse(simplejson.dumps(user))
+            DumbResponse(json.dumps(user))
         ]
 
         factory = RequestFactory()
