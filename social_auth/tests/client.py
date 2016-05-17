@@ -3,7 +3,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.http import SimpleCookie, HttpRequest
 from django.test.client import Client, RequestFactory
 import json
-from django.utils.importlib import import_module
+from importlib import import_module
 from mock import patch
 from social_auth.views import complete
 
